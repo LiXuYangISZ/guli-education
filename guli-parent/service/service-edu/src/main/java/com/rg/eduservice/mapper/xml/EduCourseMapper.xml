@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rg.eduservice.mapper.EduCourseMapper">
+
+    <select id="getPublishCourseInfo" resultType="com.rg.eduservice.entity.vo.CoursePublishVo" parameterType="string">
+        SELECT ec.id,ec.`title`,ec.`price`,ec.`lesson_num` AS lessonNum,ec.`cover`,
+        et.`name` teacherName,
+        es1.`title` AS subjectLevelOne,
+        es2.`title` AS subjectLevelTwo
+        FROM edu_course ec LEFT OUTER JOIN edu_subject es1 ON ec.`subject_parent_id`= es1.`id`
+        LEFT OUTER JOIN edu_subject es2 ON ec.`subject_id` = es2.`id`
+        LEFT OUTER JOIN edu_teacher et ON ec.`teacher_id` = et.`id`
+        WHERE ec.id=#{id}
+    </select>
+    <select id="getBaseCourseInfo" resultType="com.rg.eduservice.entity.frontvo.CourseWebVo" parameterType="string">
+        SELECT ec.id,ec.`title`,ec.`price`,ec.`lesson_num` AS lessonNum,ec.`cover`,ec.`buy_count` buyCount ,ec.`view_count` viewCount,
+        ecd.`description`,
+        et.`id` teacherId,
+        et.`name` teacherName,
+        et.`intro`,
+        et.`avatar`,
+        es1.`id` AS subjectLevelOneId,
+        es1.`title` AS subjectLevelOne,
+        es2.`id` AS subjectLevelTwoId,
+        es2.`title` AS subjectLevelTwo
+        FROM  edu_course ec LEFT OUTER JOIN edu_subject es1 ON ec.`subject_parent_id`= es1.`id`
+        LEFT OUTER JOIN edu_subject es2 ON ec.`subject_id` = es2.`id`
+        LEFT OUTER JOIN edu_teacher et ON ec.`teacher_id` = et.`id`
+        LEFT OUTER JOIN edu_course_description ecd ON ec.`id` = ecd.`id`
+        WHERE ec.id=#{id}
+    </select>
+
+</mapper>

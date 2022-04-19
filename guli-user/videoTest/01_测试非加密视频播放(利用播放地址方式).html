@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试非加密视频播放</title>
+    <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.8.1/skins/default/aliplayer-min.css" />
+<script charset="utf-8" type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.8.1/aliplayer-min.js"></script>
+</head>
+<body>
+    <div  class="prism-player" id="J_prismPlayer"></div>
+    <script>
+        var player = new Aliplayer({
+            id: 'J_prismPlayer',
+            width: '100%',
+            autoplay: false,
+            cover: 'http://liveroom-img.oss-cn-qingdao.aliyuncs.com/logo.png',  
+            //播放配置
+            //播放方式一：支持播放地址播放,此播放优先级最高，此种方式不能播放加密视频
+            source : 'https://outin-f918ff55963911ec812b00163e024c6a.oss-cn-shanghai.aliyuncs.com/sv/25f274df-17f3f6531bf/25f274df-17f3f6531bf.mp4?Expires=1647172277&OSSAccessKeyId=LTAIxSaOfEzCnBOj&Signature=4PDOEBcVGypiakCTMeXaQwRpgd8%3D',
+        },function(player){
+            console.log('播放器创建好了。')
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+# 服务端口
+server:
+  port: 8001
+
+#服务名称
+spring:
+  application:
+    name: service-edu
+
+#环境设置:dev,test,prod
+  profiles:
+    active: dev
+
+# mysql数据库连接
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql:///guli_edu
+    username: root
+    password: 186259
+
+#返回json的全局时间格式
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  #nacos服务地址
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.174.128:8848
+
+  #redis相关配置
+  redis:
+    host: 192.168.174.128
+    port: 6379
+    database: 0
+    timeout: 1800000
+    lettuce: #最大阻塞等待时间
+      pool:
+        max-active: 20
+        max-wait: -1
+        max-idle: 5
+        min-idle: 0
+
+# mybatis日志
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#logging:
+#  level: debug
+
+#配置mapper xml文件的路径
+mybatis-plus:
+  mapper-locations: classpath:com/rg/eduservice/mapper/xml/*.xml
+
+#开启熔断机制
+feign:
+  hystrix:
+    enabled: true

@@ -1,0 +1,27 @@
+#服务端口
+server:
+  port: 8002
+
+#服务名
+spring:
+  application:
+    name: service-oss
+
+#环境设置:dev,test,prod
+  profiles:
+    active: dev
+
+    #nacos服务地址
+  cloud:
+      nacos:
+        discovery:
+          server-addr: 192.168.174.128:8848
+
+#阿里云OSS地址
+aliyun:
+  oss:
+    file:
+      endpoint: oss-cn-hangzhou.aliyuncs.com
+      keyid: LTAI5tCNHHMVkeHj1LzRBqkM
+      keysecret: 4WSvjZmmrGmfCbrlAzIQUflpQmIXR1
+      bucketname: guli-photos
