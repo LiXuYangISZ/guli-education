@@ -22,6 +22,6 @@ aliyun:
   oss:
     file:
       endpoint: oss-cn-hangzhou.aliyuncs.com
-      keyid: LTAI5tCNHHMVkeHj1LzRBqkM
-      keysecret: 4WSvjZmmrGmfCbrlAzIQUflpQmIXR1
+      keyid: xxxxxxxxxx
+      keysecret: xxxxxxxxxx
       bucketname: guli-photos
